@@ -1,12 +1,14 @@
 function showPic(whichpic) {
     if (!document.getElementById("placeholder")) return false;
+    var source = whichpic.getAttribute("href"); //whichpic是元素节点，通过 getAtt 将元素节点的 href 存入变量 source
+    var placeholder = document.getElementById("placeholder");//获取占位符的地址并存入变量 placeholder
+    placeholder.setAttribute("src",source);//setAtt()中第一个是属性名，第二个是属性的值。属性的值已经保存到 source 中，即获得节点的 href
+    if (!document.getElementById("description")) return false;
+    if (whichpic.getAttribute)
     var text = whichpic.getAttribute("title") ? whichpic.getAttribute("title"): "";
     if (placeholder.firstChild.nodeType == 3){
         description.firstChild.nodeValue =text;
     }
-    var source = whichpic.getAttribute("href"); //whichpic是元素节点，通过 getAtt 将元素节点的 href 存入变量 source
-    var placeholder = document.getElementById("placeholder");//获取占位符的地址并存入变量 placeholder
-    placeholder.setAttribute("src",source);//setAtt()中第一个是属性名，第二个是属性的值。属性的值已经保存到 source 中，即获得节点的 href
     if (!document.getElementById("description")) {
         var text = whichpic.getAttribute("title");//将节点的物品保存进text 变量中
         var description = document.getElementById("description");//找到你需要的盒子
